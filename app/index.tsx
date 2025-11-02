@@ -18,18 +18,12 @@ export default function SplashScreen() {
         await loadAuth();
 
         const token = await AsyncStorage.getItem('accessToken');
-        const onboarded = await AsyncStorage.getItem('onboarded');
+      
 
         if (token && user) {
           setTimeout(() => {
             router.replace('/(dashboard)/home');
           }, 1500);
-        } else if (onboarded === 'true') {
-          setTimeout(() => {
-            router.replace('/(dashboard)/home');
-          }, 1500);
-        } else {
-          setIsChecking(false);
         }
       } catch (error) {
         setIsChecking(false);
