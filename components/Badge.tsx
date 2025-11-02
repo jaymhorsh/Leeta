@@ -18,13 +18,8 @@ const Badge: React.FC<BadgeProps> = ({ text, variant = 'default', className = ''
   };
 
   return (
-    <View
-      className={`px-3 py-1 rounded-full self-start ${variantStyles[variant]} ${className}`}
-      style={style}
-    >
-      <Text className={`text-xs font-matterSemiBold ${variantStyles[variant].split(' ')[1]}`}>
-        {text}
-      </Text>
+    <View className={`px-3 py-1 rounded-full self-start ${variantStyles[variant]} ${className}`} style={style}>
+      <Text className={`text-xs font-matterSemiBold ${variantStyles[variant].split(' ')[1]}`}>{text}</Text>
     </View>
   );
 };

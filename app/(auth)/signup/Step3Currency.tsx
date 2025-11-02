@@ -62,18 +62,7 @@ export default function Step3Currency() {
         <Text className="text-xs text-gray-500 mt-2">*You can change this later</Text>
       </View>
 
-      <View className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-4">
-        <View className="flex-row items-center border border-gray-200 rounded-xl px-4 py-2 mb-4">
-          <Text className="text-gray-400 mr-2">🔍</Text>
-          <TextInput
-            value={searchQuery}
-            onChangeText={setSearchQuery}
-            placeholder="Search"
-            placeholderTextColor="#9CA3AF"
-            className="flex-1 text-base font-matter"
-          />
-        </View>
-
+      <View className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-4">#
         <ScrollView className="max-h-80" showsVerticalScrollIndicator={false}>
           {filteredCurrencies.map((currency) => (
             <TouchableOpacity

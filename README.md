@@ -1,7 +1,31 @@
-#  Assessment
+# Assessment
 
 A modern React Native app assessment with clean UI, smooth animations, and live data from DummyJSON.  
 Built to demonstrate practical engineering choices, structured architecture, and thoughtful UX.
+
+---
+
+## 📱 Live APK Download
+
+**🚀 Try the app now!**
+
+**Download Link:** [https://expo.dev/accounts/jaymhorsh/projects/leeta-app/builds/3bc99006-dced-49ee-a4d5-018ba6213989](https://expo.dev/accounts/jaymhorsh/projects/leeta-app/builds/3bc99006-dced-49ee-a4d5-018ba6213989)
+
+**Or scan this QR code:**
+
+![QR Code](https://qr.expo.dev/eas-update?slug=leeta-app&projectId=9172b9e5-ef3e-4f83-9331-f44a1cea9dea&appScheme=leeta)
+
+**Installation:**
+
+1. Click the download link above or scan the QR code
+2. Download the APK file
+3. Enable "Install from Unknown Sources" on your Android device
+4. Install and run the app
+
+**Test Credentials:**
+
+- Username: `emilys`
+- Password: `emilyspass`
 
 ---
 
@@ -19,6 +43,7 @@ Built to demonstrate practical engineering choices, structured architecture, and
 - **NativeWind (Tailwind CSS)** – Consistent, responsive styling
 
 ### Structure
+
 ```
 app/
  ├── (auth)/          → Login and onboarding flow
@@ -41,6 +66,7 @@ This layout separates concerns for better maintainability and scalability.
 
 **Library:** React Query  
 **Source:** DummyJSON API
+
 - **Pagination:** Infinite scroll (10 items per page)
 - **Caching:** 5-minute lifetime with background refetch
 - **Error Handling:** Toast messages and retry logic
@@ -56,8 +82,7 @@ This layout separates concerns for better maintainability and scalability.
 const { data, fetchNextPage, isLoading } = useInfiniteQuery({
   queryKey: ['products'],
   queryFn: ({ pageParam = 0 }) => fetchProducts(10, pageParam),
-  getNextPageParam: (last) =>
-    last.skip + last.limit < last.total ? last.skip + last.limit : undefined,
+  getNextPageParam: (last) => (last.skip + last.limit < last.total ? last.skip + last.limit : undefined),
 });
 ```
 
@@ -127,22 +152,25 @@ npm run submit:ios
 ```
 
 **Recommended for Assessment Demo:**
+
 ```bash
 npm run build:preview:android
 ```
+
 This creates a shareable APK that can be installed directly on devices without app store submission.
 
 ---
+
 ## Key Engineering Decisions
 
-| Decision | Choice | Reason |
-|----------|--------|--------|
-| **Architecture** | File-based routing + modular folders | Easier scalability and clarity |
-| **Server State** | React Query | Built-in caching and pagination |
-| **Client State** | Zustand | Minimal setup, better DX |
-| **Storage** | Expo SecureStore | Encrypted, production-ready |
-| **Styling** | NativeWind | Tailwind syntax, responsive design |
-| **Build Type** | Expo Dev Build | Required for SecureStore native module |
+| Decision         | Choice                               | Reason                                 |
+| ---------------- | ------------------------------------ | -------------------------------------- |
+| **Architecture** | File-based routing + modular folders | Easier scalability and clarity         |
+| **Server State** | React Query                          | Built-in caching and pagination        |
+| **Client State** | Zustand                              | Minimal setup, better DX               |
+| **Storage**      | Expo SecureStore                     | Encrypted, production-ready            |
+| **Styling**      | NativeWind                           | Tailwind syntax, responsive design     |
+| **Build Type**   | Expo Dev Build                       | Required for SecureStore native module |
 
 ---
 
@@ -157,10 +185,12 @@ This creates a shareable APK that can be installed directly on devices without a
 ---
 
 ## Trade-offs & Known Limitations
+
 | **Backend** | DummyJSON API only | No custom backend needed |
 | **Offline Writes** | Read-only cache | React Query limitation |
 | **i18n** | English only | Localization planned for later |
 | **Unit Tests** | Skipped | Focused on UI and data flow within time limit
+
 ---
 
 ## Design & Interaction
@@ -188,10 +218,3 @@ This project reflects:
 **Built by:** Jaymhorsh  
 **Framework:** Expo + React Native + TypeScript  
 **License:** MIT
-
-
-
-
-
-
-

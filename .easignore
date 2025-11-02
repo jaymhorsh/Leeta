@@ -45,7 +45,8 @@ docs/
 # Screenshots
 screenshots/
 demos/
-
+android/
+.expo/
 # Build artifacts
 dist/
 build/

@@ -1,4 +1,4 @@
-import { Animated, Text, BackHandler, TouchableOpacity, View, Alert } from 'react-native';
+import { Animated, Text, TouchableOpacity, View, Alert } from 'react-native';
 import { useWelcomeAnimation } from '@/hooks/useSplashAnimations';
 import { useEffect } from 'react';
 import { useRouter } from 'expo-router';
@@ -15,38 +15,13 @@ export default function SplashScreen() {
       if (onboarded === 'true') {
         setTimeout(() => {
           router.replace('/(dashboard)/home');
-        }, 2000); // Show splash for 2 seconds then navigate
+        }, 2000); 
       }
     };
 
     checkOnboarding();
   }, [router]);
 
-  // Handle hardware back button
-  useEffect(() => {
-    const backAction = () => {
-      Alert.alert(
-        'Exit App',
-        'Are you sure you want to exit?',
-        [
-          {
-            text: 'Cancel',
-            style: 'cancel',
-          },
-          {
-            text: 'Exit',
-            onPress: () => BackHandler.exitApp(),
-            style: 'destructive',
-          },
-        ],
-        { cancelable: false },
-      );
-      return true;
-    };
-
-    const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
-    return () => backHandler.remove();
-  }, []);
 
   const handleGetStarted = () => {
     router.push('/(auth)/signup/Step1Goal');
@@ -60,18 +35,18 @@ export default function SplashScreen() {
     <View className="flex-1 bg-[#213517] items-center justify-center">
       <Animated.View className="flex-1 items-center justify-center px-6" style={{ backgroundColor }}>
         <Animated.Image
-          source={require('../../assets/logo.png')}
+          source={require('@/assets/images/logo.png')}
           className="w-28 h-28 mb-8"
           style={{ transform: [{ scale: logoScale }] }}
           resizeMode="contain"
         />
-
+        {/*  */}
         <Animated.Text className="text-2xl font-semibold text-[#213517] mb-2 text-center" style={{ opacity: textOpacity }}>
-          Safer and Convenient Gas Orders
+          Safer and Convenient
         </Animated.Text>
 
         <Animated.Text className="text-sm text-gray-500 text-center mb-10" style={{ opacity: textOpacity }}>
-          Order gas from anywhere, anytime. Fast, safe, and reliable.
+          Order rom anywhere, anytime. Fast, safe, and reliable.
         </Animated.Text>
 
         <Animated.View

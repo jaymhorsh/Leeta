@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useOnboardingStore } from '@/store/onboardingStore';
 import { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const goals = [
   { id: 'manage', label: 'To manage my finances' },
@@ -24,7 +25,7 @@ export default function Step1Goal() {
   };
 
   return (
-    <View className="flex-1 bg-white px-6 pt-16">
+    <SafeAreaView className="flex-1 bg-white px-6 ">
       <View className="mb-8">
         <TouchableOpacity onPress={() => router.back()} className="mb-4">
           <Text className="text-2xl">←</Text>
@@ -69,6 +70,6 @@ export default function Step1Goal() {
       >
         <Text className="text-white text-center font-matterSemiBold text-base">Continue</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }

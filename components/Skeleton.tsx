@@ -9,19 +9,8 @@ interface SkeletonProps {
   style?: ViewStyle;
 }
 
-const Skeleton: React.FC<SkeletonProps> = ({
-  width = '100%',
-  height = 20,
-  rounded = false,
-  className = '',
-  style,
-}) => {
-  return (
-    <View
-      className={`bg-gray-200 ${rounded ? 'rounded-full' : 'rounded-lg'} ${className}`}
-      style={[{ width, height }, style]}
-    />
-  );
+const Skeleton: React.FC<SkeletonProps> = ({ width = '100%', height = 20, rounded = false, className = '', style }) => {
+  return <View className={`bg-gray-200 ${rounded ? 'rounded-full' : 'rounded-lg'} ${className}`} style={[{ width, height }, style]} />;
 };
 
 export default Skeleton;
