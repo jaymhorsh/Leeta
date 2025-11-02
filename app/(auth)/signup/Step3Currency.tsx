@@ -30,7 +30,7 @@ export default function Step3Currency() {
     if (selectedCurrency) {
       setLocation(selectedCurrency);
       await AsyncStorage.setItem('onboarded', 'true');
-      router.replace('/(dashboard)/home');
+      router.replace('/(auth)/sign-in');
     }
   };
 
@@ -56,7 +56,6 @@ export default function Step3Currency() {
           <View className="h-1 w-16 bg-brand-primary rounded mx-1" />
           <View className="h-1 w-16 bg-brand-primary rounded" />
         </View>
-
         <View className="w-10" />
       </View>
 
