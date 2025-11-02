@@ -5,15 +5,10 @@ Built to demonstrate practical engineering choices, structured architecture, and
 
 ---
 
-## 📱 Live APK Download
+## 📱 Live Android APK Download
 
-**🚀 Try the app now!**
-
-**Download Link:** [https://expo.dev/accounts/jaymhorsh/projects/leeta-app/builds/3bc99006-dced-49ee-a4d5-018ba6213989](https://expo.dev/accounts/jaymhorsh/projects/leeta-app/builds/3bc99006-dced-49ee-a4d5-018ba6213989)
-
-**Or scan this QR code:**
-
-![QR Code](https://qr.expo.dev/eas-update?slug=leeta-app&projectId=9172b9e5-ef3e-4f83-9331-f44a1cea9dea&appScheme=leeta)
+**Download Link:** [https://expo.dev/accounts/jaymhorsh/projects/leeta-app/builds/43fadcdf-2b52-4783-84f8-52c389a265b3]
+(https://expo.dev/accounts/jaymhorsh/projects/leeta-app/builds/43fadcdf-2b52-4783-84f8-52c389a265b3)
 
 **Installation:**
 
@@ -76,7 +71,7 @@ This layout separates concerns for better maintainability and scalability.
 
 - Handles cache, background updates, and pagination automatically
 - Cleaner and more efficient than Redux or manual fetch patterns
-- Reduces boilerplate while keeping strong control of loading and error states
+- Uptimist update.
 
 ```typescript
 const { data, fetchNextPage, isLoading } = useInfiniteQuery({
