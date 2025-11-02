@@ -1,0 +1,23 @@
+// Colors constants mapped to Tailwind config
+export const Colors = {
+  whiteColor: '#ffffff',
+  blackColor: '#000000',
+  primary: '#007AFF',
+  secondary: '#E7E7E7',
+  bgPrimary: '#D4D4D4',
+  bgSecondary: '#000000',
+  bgCancel: '#FF00004A',
+  buttonPrimary: '#FFDE59',
+  buttonSecondary: '#000000',
+  buttonTertiary: '#D9D9D9',
+  textPrimary: '#000000',
+  textSecondary: '#ffffff',
+  textGray: '#848484',
+  textRed: '#FF2F2F',
+  grey2: '#E5E5E7',
+  grey3: '#C7C7CC',
+  grey5: '#8E8E93',
+  grey8: '#F2F2F7',
+  red: '#FF3B30',
+  green: '#34C759',
+};
