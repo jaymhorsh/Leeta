@@ -3,9 +3,9 @@ import { StatusBar } from 'expo-status-bar';
 
 export default function SettingsLayout() {
   return (
-    <Stack>
-      <Stack.Screen name="VendorDetail" options={{ headerShown: false }} />
-      <Stack.Screen name="settings" options={{ headerShown: false }} />
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="VendorDetail" />
+      <Stack.Screen name="settings" />
       <StatusBar style="auto" />
     </Stack>
   );
