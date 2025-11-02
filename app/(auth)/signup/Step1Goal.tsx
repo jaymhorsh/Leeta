@@ -83,7 +83,7 @@ export default function Step1Goal() {
         ))}
       </ScrollView>
 
-      <View className="px-6 mb-10">
+      <View className="px-6 pb-14">
         <TouchableOpacity
           onPress={handleContinue}
           disabled={selectedGoals.length === 0}

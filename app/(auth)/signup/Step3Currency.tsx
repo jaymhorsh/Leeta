@@ -126,7 +126,7 @@ export default function Step3Currency() {
               ))}
             </ScrollView>
 
-            <View className="px-6 py-4">
+            <View className="pb-14 px-6 py-4">
               <TouchableOpacity onPress={() => setModalVisible(false)} className="bg-brand-primary py-4 rounded-full">
                 <Text className="text-white text-center font-matterSemiBold text-base">Done</Text>
               </TouchableOpacity>

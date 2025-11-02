@@ -68,7 +68,7 @@ export default function Step2Profile() {
           </View>
         </ScrollView>
 
-        <View className="px-6 pb-6">
+        <View className="px-6 pb-14">
           <TouchableOpacity
             onPress={handleContinue}
             disabled={!username.trim() || username.length > 15}

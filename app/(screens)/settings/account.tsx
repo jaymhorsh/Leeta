@@ -1,6 +1,5 @@
 import { Button, Input } from '@/components';
 import { useUpdateUser } from '@/hooks/settings';
-import { useThemeStore } from '@/store';
 import { useAuthStore } from '@/store/authStore';
 import { UpdateUserRequest } from '@/types/settings';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -13,7 +12,6 @@ const Account = () => {
   const router = useRouter();
   const { user } = useAuthStore();
   const { mutate: updateUser, isPending } = useUpdateUser();
-  const { themeColor } = useThemeStore();
   const [form, setForm] = useState({
     fullName: user ? `${user.firstName} ${user.lastName}` : '',
     email: user?.email || '',
@@ -27,7 +25,6 @@ const Account = () => {
       return;
     }
 
-    // Split full name into first and last name
     const nameParts = form.fullName.trim().split(' ');
     const firstName = nameParts[0] || '';
     const lastName = nameParts.slice(1).join(' ') || '';
@@ -106,7 +103,7 @@ const Account = () => {
             title={isPending ? 'Saving...' : 'Save Changes'}
             onPress={handleSaveChanges}
             disabled={isPending}
-            className={isPending ? 'bg-gray-300' : themeColor}
+            className={isPending ? 'bg-gray-300' : 'bg-brand-primary'}
           />
         </View>
       </View>

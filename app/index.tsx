@@ -18,15 +18,15 @@ export default function SplashScreen() {
       try {
         const token = await AsyncStorage.getItem('accessToken');
         if (token && user) {
-          setTimeout(() => {
-            router.replace('/(dashboard)/home');
-          }, 1500);
+          router.replace('/(dashboard)/home');
+        } else {
+          setIsChecking(false);
         }
       } catch (error) {
+        console.error('Auth check error:', error);
         setIsChecking(false);
       }
     };
-
     checkAuthAndOnboarding();
   }, [router, user]);
 

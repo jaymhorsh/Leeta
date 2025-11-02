@@ -16,4 +16,3 @@ export const useAppStore = create<AppState>((set) => ({
 }));
 
 export { useAuthStore } from './authStore';
-export { useThemeStore } from './themeStore';
