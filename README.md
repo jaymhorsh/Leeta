@@ -65,6 +65,8 @@ const { data, fetchNextPage, isLoading } = useInfiniteQuery({
 
 ## Running the Project Locally
 
+> **Note:** All run commands are configured in `package.json` scripts for convenience.
+
 ### Requirements
 
 - Node.js 18+
@@ -83,18 +85,52 @@ cd leeta
 npm install
 
 # 3. Build a development client (required for native modules)
-npx expo run:android
+npm run android
 # or
-npx expo run:ios
+npm run ios
 
 # 4. Start development server
-npx expo start --dev-client
+npm start
 ```
 
 ### Test Credentials
 
 - **Username:** `emilys`
 - **Password:** `emilyspass`
+
+---
+
+## Building for Production
+
+> **All build commands are pre-configured in `package.json` scripts.**
+
+### EAS Build Commands
+
+```bash
+# Development builds (for testing with native modules)
+npm run build:dev:android
+npm run build:dev:ios
+
+# Preview builds (shareable APK/IPA for demos)
+npm run build:preview:android
+npm run build:preview:ios
+
+# Production builds (for app stores)
+npm run build:prod:android    # Android AAB for Play Store
+npm run build:prod:ios         # iOS for App Store
+npm run build:prod:apk         # Android APK for direct distribution
+npm run build:all:prod         # Build both platforms
+
+# Submit to app stores
+npm run submit:android
+npm run submit:ios
+```
+
+**Recommended for Assessment Demo:**
+```bash
+npm run build:preview:android
+```
+This creates a shareable APK that can be installed directly on devices without app store submission.
 
 ---
 ## Key Engineering Decisions
