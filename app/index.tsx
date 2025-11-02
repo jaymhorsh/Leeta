@@ -1,27 +1,43 @@
-import { Animated, Text, TouchableOpacity, View, Alert } from 'react-native';
+import { Animated, Text, TouchableOpacity, View, StatusBar, ActivityIndicator } from 'react-native';
 import { useWelcomeAnimation } from '@/hooks/useSplashAnimations';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useAuthStore } from '@/store/authStore';
 
 export default function SplashScreen() {
   const router = useRouter();
   const { logoScale, textOpacity, buttonTranslateY, buttonOpacity, backgroundColor } = useWelcomeAnimation();
+  const { user, loadAuth } = useAuthStore();
+  const [isChecking, setIsChecking] = useState(true);
 
-  // Check onboarding status
   useEffect(() => {
-    const checkOnboarding = async () => {
-      const onboarded = await AsyncStorage.getItem('onboarded');
-      if (onboarded === 'true') {
-        setTimeout(() => {
-          router.replace('/(dashboard)/home');
-        }, 2000); 
+    const checkAuthAndOnboarding = async () => {
+      try {
+        await loadAuth();
+
+        const token = await AsyncStorage.getItem('accessToken');
+        const onboarded = await AsyncStorage.getItem('onboarded');
+
+        if (token && user) {
+          setTimeout(() => {
+            router.replace('/(dashboard)/home');
+          }, 1500);
+        } else if (onboarded === 'true') {
+          setTimeout(() => {
+            router.replace('/(dashboard)/home');
+          }, 1500);
+        } else {
+          setIsChecking(false);
+        }
+      } catch (error) {
+        setIsChecking(false);
       }
     };
 
-    checkOnboarding();
-  }, [router]);
-
+    checkAuthAndOnboarding();
+  }, [router, user, loadAuth]);
 
   const handleGetStarted = () => {
     router.push('/(auth)/signup/Step1Goal');
@@ -31,30 +47,43 @@ export default function SplashScreen() {
     router.push('/(auth)/sign-in');
   };
 
-  return (
-    <View className="flex-1 bg-[#213517] items-center justify-center">
-      <Animated.View className="flex-1 items-center justify-center px-6" style={{ backgroundColor }}>
-        <Animated.Image
-          source={require('@/assets/images/logo.png')}
-          className="w-28 h-28 mb-8"
-          style={{ transform: [{ scale: logoScale }] }}
-          resizeMode="contain"
-        />
-        {/*  */}
-        <Animated.Text className="text-2xl font-semibold text-[#213517] mb-2 text-center" style={{ opacity: textOpacity }}>
-          Safer and Convenient
-        </Animated.Text>
+  if (isChecking) {
+    return (
+      <SafeAreaView className="flex-1 bg-white items-center justify-center">
+        <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
+        <ActivityIndicator size="large" color="#00B388" />
+        <Text className="mt-4 text-gray-600 font-matter">Loading...</Text>
+      </SafeAreaView>
+    );
+  }
 
-        <Animated.Text className="text-sm text-gray-500 text-center mb-10" style={{ opacity: textOpacity }}>
-          Order rom anywhere, anytime. Fast, safe, and reliable.
-        </Animated.Text>
+  return (
+    <SafeAreaView className="flex-1 bg-white">
+      <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
+      <Animated.View className="flex-1 items-center justify-between px-6 py-12" style={{ backgroundColor }}>
+        <View className="flex-1 items-center justify-center">
+          <Animated.Image
+            source={require('@/assets/images/logo.png')}
+            className="w-40 h-40 mb-8"
+            style={{ transform: [{ scale: logoScale }] }}
+            resizeMode="contain"
+          />
+
+          <Animated.Text className="text-3xl font-matterBold text-brand-text mb-3 text-center" style={{ opacity: textOpacity }}>
+            Safer and Convenient
+          </Animated.Text>
+
+          <Animated.Text className="text-base text-gray-600 text-center max-w-[280px] font-matter" style={{ opacity: textOpacity }}>
+            Order from anywhere, anytime. Fast, safe, and reliable.
+          </Animated.Text>
+        </View>
 
         <Animated.View
           style={{
             transform: [{ translateY: buttonTranslateY }],
             opacity: buttonOpacity,
           }}
-          className="w-full px-8"
+          className="w-full"
         >
           <TouchableOpacity onPress={handleGetStarted} className="bg-brand-primary px-10 py-4 rounded-full active:opacity-90 mb-4">
             <Text className="text-white font-matterSemiBold text-center text-base">Get Started</Text>
@@ -67,6 +96,6 @@ export default function SplashScreen() {
           </TouchableOpacity>
         </Animated.View>
       </Animated.View>
-    </View>
+    </SafeAreaView>
   );
 }

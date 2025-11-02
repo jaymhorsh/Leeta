@@ -45,14 +45,14 @@ const SignIn = () => {
       <View className="flex-1 justify-between px-6">
         {/* Header */}
         <View className="mt-14 mb-16">
-          <Text className="text-3xl font-sf-bold text-neutral-primary text-center mb-3">Welcome Back!</Text>
-          <Text className="text-lg font-sf-regular text-neutral-secondary text-center">Sign in to continue ordering gas</Text>
+          <Text className="text-3xl font-matterBold text-brand-text text-center mb-3">Welcome Back!</Text>
+          <Text className="text-lg font-matter text-text-secondary text-center">Sign in to continue ordering gas</Text>
           {/* Input Section */}
           <View className="mt-10 justify-center">
             <Input
               label="Username"
               placeholder="Enter your username"
-              placeholderTextColor="#767E8C"
+              placeholderTextColor="#848484"
               value={formData.username}
               onChangeText={(value) => handleInputChange('username', value)}
               autoCapitalize="none"
@@ -63,7 +63,7 @@ const SignIn = () => {
             <Input
               label="Password"
               placeholder="Enter your password"
-              placeholderTextColor="#767E8C"
+              placeholderTextColor="#848484"
               value={formData.password}
               onChangeText={(value) => handleInputChange('password', value)}
               secureTextEntry
@@ -75,8 +75,8 @@ const SignIn = () => {
 
             {/* Demo Credentials Info */}
             <View className="mb-6 p-4 bg-blue-50 rounded-lg">
-              <Text className="text-base font-sf-medium text-blue-800 mb-2">Demo Credentials:</Text>
-              <Text className="text-sm text-blue-600 font-sf-regular">
+              <Text className="text-base font-matterMedium text-blue-800 mb-2">Demo Credentials:</Text>
+              <Text className="text-sm text-blue-600 font-matter">
                 Username: emilys{'\n'}
                 Password: emilyspass
               </Text>
@@ -88,12 +88,12 @@ const SignIn = () => {
           <Button
             title={isLoading ? 'Signing In...' : 'Sign In'}
             onPress={handleLogin}
-            className="bg-brand mb-2"
+            className="bg-brand-primary mb-2"
             disabled={!formData.username.trim() || !formData.password.trim() || isLoading}
           />
-          <Text className="text-center text-neutral-secondary font-sf-regular">
+          <Text className="text-center text-text-secondary font-matter">
             Don&apos;t have an account?{' '}
-            <Text className="text-brand font-sf-medium" onPress={handleSignUp}>
+            <Text className="text-brand-primary font-matterSemiBold" onPress={handleSignUp}>
               Sign Up
             </Text>
           </Text>

@@ -24,7 +24,7 @@ const TodoButton: React.FC<TodoButtonProps & { backgroundColor?: string }> = ({
         flex-row items-center justify-center rounded-2xl
         h-[56px]
         ${isDisabled ? 'opacity-50' : ''}
-        ${className || 'bg-brand'}
+        ${className || 'bg-brand-primary'}
       `
         .trim()
         .replace(/\s+/g, ' ')}
@@ -41,7 +41,7 @@ const TodoButton: React.FC<TodoButtonProps & { backgroundColor?: string }> = ({
       {loading ? (
         <ActivityIndicator color={iconColor} />
       ) : (
-        <Text className={`text-base font-sf-semibold ${textClassName || 'text-white'}`}>{title}</Text>
+        <Text className={`text-base font-matterSemiBold ${textClassName || 'text-white'}`}>{title}</Text>
       )}
 
       {/* Right Icon */}

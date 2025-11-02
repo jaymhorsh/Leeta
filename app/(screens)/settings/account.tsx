@@ -58,9 +58,9 @@ const Account = () => {
         {/* Header */}
         <View className="flex-row items-center justify-between mt-4 mb-8">
           <TouchableOpacity onPress={() => router.back()}>
-            <MaterialIcons name="arrow-back-ios" size={24} color="#1B1C1F" />
+            <MaterialIcons name="arrow-back-ios" size={24} color="#213517" />
           </TouchableOpacity>
-          <Text className="text-xl font-sf-bold text-neutral-primary">Account</Text>
+          <Text className="text-xl font-matterBold text-brand-text">Account</Text>
           <View style={{ width: 24 }} />
         </View>
 
@@ -91,12 +91,12 @@ const Account = () => {
           </View>
 
           {/* Password */}
-          <Text className="text-lg font-sf-semibold text-neutral-primary mb-2">Change Password</Text>
+          <Text className="text-lg font-matterSemiBold text-brand-text mb-2">Change Password</Text>
           <Button
             title="Change Password"
             onPress={handleChangePassword}
-            textClassName="text-neutral-secondary text-lg"
-            className="bg-wite border rounded-lg border-neutral-line"
+            textClassName="text-text-secondary text-lg"
+            className="bg-white border rounded-lg border-border"
           />
         </View>
 
@@ -106,12 +106,11 @@ const Account = () => {
             title={isPending ? 'Saving...' : 'Save Changes'}
             onPress={handleSaveChanges}
             disabled={isPending}
-            className={isPending ? 'bg-neutral-line' : themeColor}
+            className={isPending ? 'bg-gray-300' : themeColor}
           />
         </View>
       </View>
     </SafeAreaView>
   );
 };
-
 export default Account;

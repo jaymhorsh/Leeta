@@ -4,8 +4,8 @@ import { LoginRequest, RefreshTokenRequest } from '@/types/auth';
 import { showToast } from '@/utils/toast';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// Login mutation hook
 export const useLogin = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
@@ -14,7 +14,7 @@ export const useLogin = () => {
   return useMutation({
     mutationFn: (data: LoginRequest) => login(data),
     onMutate: () => setLoading(true),
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       const userProfile = {
         id: data.id,
         username: data.username,
@@ -24,13 +24,15 @@ export const useLogin = () => {
         gender: data.gender,
         image: data.image,
       };
-      setAuth(userProfile, data.accessToken, data.refreshToken);
+
+      await setAuth(userProfile, data.accessToken, data.refreshToken);
+      await AsyncStorage.setItem('onboarded', 'true');
+
       queryClient.invalidateQueries({ queryKey: ['user'] });
       showToast('success', 'Login successful!');
       router.replace('/(dashboard)/home');
     },
     onError: (error: any) => {
-      console.error('Login error:', error);
       showToast('error', error?.response?.data?.message || 'Login failed. Please try again.');
     },
     onSettled: () => setLoading(false),
