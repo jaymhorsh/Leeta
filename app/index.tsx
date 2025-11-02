@@ -1,6 +1,5 @@
 import { Animated, Text, TouchableOpacity, View, StatusBar, ActivityIndicator } from 'react-native';
 import { useWelcomeAnimation } from '@/hooks/useSplashAnimations';
-import { useEffect, useState } from 'react';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -9,47 +8,13 @@ import { useAuthStore } from '@/store/authStore';
 export default function SplashScreen() {
   const router = useRouter();
   const { logoScale, textOpacity, buttonTranslateY, buttonOpacity, backgroundColor } = useWelcomeAnimation();
-  const { user, loadAuth } = useAuthStore();
-  const [isChecking, setIsChecking] = useState(true);
-
-  useEffect(() => {
-    const checkAuthAndOnboarding = async () => {
-      try {
-        await loadAuth();
-
-        const token = await AsyncStorage.getItem('accessToken');
-      
-
-        if (token && user) {
-          setTimeout(() => {
-            router.replace('/(dashboard)/home');
-          }, 1500);
-        }
-      } catch (error) {
-        setIsChecking(false);
-      }
-    };
-
-    checkAuthAndOnboarding();
-  }, [router, user, loadAuth]);
 
   const handleGetStarted = () => {
     router.push('/(auth)/signup/Step1Goal');
   };
-
   const handleSignIn = () => {
     router.push('/(auth)/sign-in');
   };
-
-  if (isChecking) {
-    return (
-      <SafeAreaView className="flex-1 bg-white items-center justify-center">
-        <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
-        <ActivityIndicator size="large" color="#00B388" />
-        <Text className="mt-4 text-gray-600 font-matter">Loading...</Text>
-      </SafeAreaView>
-    );
-  }
 
   return (
     <SafeAreaView className="flex-1 bg-white">
