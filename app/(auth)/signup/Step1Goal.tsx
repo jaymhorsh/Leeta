@@ -34,7 +34,7 @@ export default function Step1Goal() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-white" edges={['top']}>
+    <SafeAreaView className="flex-1 bg-white">
       <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
 
       <View className="flex-row items-center justify-between px-6 py-4">
@@ -83,7 +83,7 @@ export default function Step1Goal() {
         ))}
       </ScrollView>
 
-      <View className="px-6 pb-6">
+      <View className="px-6 mb-10">
         <TouchableOpacity
           onPress={handleContinue}
           disabled={selectedGoals.length === 0}
