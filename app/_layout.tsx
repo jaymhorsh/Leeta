@@ -19,10 +19,28 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const { loadAuth } = useAuthStore();
 
+  
   useEffect(() => {
-    loadAuth();
-  }, [loadAuth]);
+    const checkAuthAndOnboarding = async () => {
+      try {
+        await loadAuth();
 
+        const token = await AsyncStorage.getItem('accessToken');
+      
+
+        if (token && user) {
+          setTimeout(() => {
+            router.replace('/(dashboard)/home');
+          }, 1500);
+        }
+      } catch (error) {
+        setIsChecking(false);
+      }
+    };
+
+    checkAuthAndOnboarding();
+  }, [router, user, loadAuth]);
+  
   const [loaded, error] = useFonts({
     'Matter-Regular': require('../assets/fonts/Matter-Regular.otf'),
     'Matter-Bold': require('../assets/fonts/Matter-Bold.otf'),
