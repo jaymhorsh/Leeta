@@ -5,6 +5,7 @@ export default function SettingsLayout() {
   return (
     <Stack>
       <Stack.Screen name="vendorDetail" options={{ headerShown: false }} />
+      <Stack.Screen name="setting" options={{ headerShown: false }} />
       <StatusBar style="auto" />
     </Stack>
   );
