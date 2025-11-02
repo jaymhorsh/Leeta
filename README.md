@@ -7,8 +7,8 @@ Built to demonstrate practical engineering choices, structured architecture, and
 
 ## 📱 Live Android APK Download
 
-**Download Link:** [https://expo.dev/accounts/jaymhorsh/projects/leeta-app/builds/43fadcdf-2b52-4783-84f8-52c389a265b3]
-(https://expo.dev/accounts/jaymhorsh/projects/leeta-app/builds/43fadcdf-2b52-4783-84f8-52c389a265b3)
+**Download Link:** [https://expo.dev/accounts/jaymhorsh/projects/leeta-app/builds/66a5f393-1d86-4deb-b9ea-2744adb8a4e9]
+(https://expo.dev/accounts/jaymhorsh/projects/leeta-app/builds/66a5f393-1d86-4deb-b9ea-2744adb8a4e9)
 
 **Installation:**
 
