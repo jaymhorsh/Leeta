@@ -1,1 +1,11 @@
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
 
+export default function SettingsLayout() {
+  return (
+    <Stack>
+      <Stack.Screen name="vendorDetail" options={{ headerShown: false }} />
+      <StatusBar style="auto" />
+    </Stack>
+  );
+}
